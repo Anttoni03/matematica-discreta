@@ -286,41 +286,40 @@ class Entrega {
       
       if (p.length*p[0].length != a.length) {
           
-          return false;
+        return false;
       }
       
       for (int [] ep1 : p) {
           
-          for (int [] ep2 : p) {
+        for (int [] ep2 : p) {
               
-              if (ep1 != ep2) {
+          if (ep1 != ep2) {
                   
-                  if (interseccion(ep1, ep2).length != 0) {
+            if (interseccion(ep1, ep2).length != 0) {
                         
-                      return false;
-                  }
-              }
+              return false;
+            }
           }
+        }
       }
-      
       for (int [] ep : p) {
             
-          for (int eep : ep) {
+        for (int eep : ep) {
               
-              elementoEncontrado = false;
+          elementoEncontrado = false;
               
-              for (int ea : a) {
+          for (int ea : a) {
                     
-                  if (eep == ea) {
+            if (eep == ea) {
                       
-                      elementoEncontrado = true;
-                  }
-              }
-              if (!elementoEncontrado) {
-                   
-                  return false;
-              }
+              elementoEncontrado = true;
+            }
           }
+          if (!elementoEncontrado) {
+                   
+            return false;
+          }
+        }
       }
       return true;
     }
@@ -340,7 +339,24 @@ class Entrega {
      * que `y` pertany a `codom` i que tant `dom` com `codom` també estàn ordenats de menor a major.
      */
     static int[] exercici3(int[] dom, int[] codom, Function<Integer, Integer> f, int y) {
-      return new int[]{}; // TO DO
+      int [] tmp = new int[dom.length];
+      int indice = 0;
+       
+      for (int edom : dom) {
+           
+        if (f.apply(edom) == y) {
+                
+          tmp[indice] = edom;
+          indice++;
+        }
+      }
+      int [] ai = new int[indice];
+       
+      for (int i = 0; i < indice; i++) {
+           
+        ai[i] = tmp[i];
+      }
+      return ai;
     }
 
     /*

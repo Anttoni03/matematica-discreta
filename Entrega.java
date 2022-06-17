@@ -118,14 +118,56 @@ class Entrega {
      * que cada un d'ells està ordenat de menor a major.
      */
     static boolean exercici3(int[][] universe) {
-      return false; // TO DO
+      boolean casoNoValido;
+        
+      for (int [] x : universe) {
+            
+        casoNoValido = false;
+            
+        for (int [] y : universe) {
+                
+          if (Tema2.interseccion(x, y).length != y.length) {
+
+            casoNoValido = true;
+          }
+        }
+        if (!casoNoValido) {
+                
+          return false;
+        }
+      }
+      return true;
     }
 
     /* JOSE
      * És cert que ∀x. ∃!y. x·y ≡ 1 (mod n) ?
      */
     static boolean exercici4(int[] universe, int n) {
-      return false; // TO DO
+      boolean casoVerificado;
+        
+      for (int x : universe) {
+            
+        casoVerificado = false;
+            
+        for (int y : universe) {
+                
+          if ((x*y)%n == 1) {
+                    
+            if (!casoVerificado) {
+                        
+              casoVerificado = true;
+            }else {
+                        
+              return false;
+            }
+          }
+        }
+        if (!casoVerificado) {
+                
+          return false;
+        }
+      }
+      return true;
     }
 
     /*
@@ -219,60 +261,64 @@ class Entrega {
    * x és un enter d'a i el resultat f.apply(x) és un enter de b).
    */
   static class Tema2 {
+    
     static int [] interseccion(int [] a, int [] b) {     
-      int [] c = new int[a.length];
-      int elementosComunes = 0;
+      ArrayList<Integer> elementosComunes = new ArrayList<>();
+      int [] out;
       
-      for (int i = 0; i < a.length; i++) {
+      for (int ea : a) {
           
-          for (int j = 0; j < b.length; j++) {
+        for (int eb : b) {
               
-              if (a[i] == b[j]) {
+          if (ea == eb) {
                   
-                  c[elementosComunes] = a[i];
-                  elementosComunes++;
-              }
+            elementosComunes.add(ea);
           }
+        }
       }
-      int [] d = new int[elementosComunes];
+      out = new int[elementosComunes.size()];
       
-      for (int i = 0; i < elementosComunes; i++) {
+      for (int i = 0; i < elementosComunes.size(); i++) {
           
-          d[i] = c[i];
+        out[i] = elementosComunes.get(i);
       }
-      return d;
+      return out;
     }
-    
-    
+
     static int [] union(int [] a, int [] b){
-      int[] temp = new int[a.length + b.length];
-      int indice = 0;
+      ArrayList<Integer> elementosEncontrados = new ArrayList<>();
+      int [] out; int aux;
+            
       for (int ea : a){
-          boolean igual = false;
-          for (int i = 0; i < indice; i++){
-              if (ea == temp[i]) igual = true;
-          }
-          if (!igual){
-              temp[indice] = ea;
-              indice++;
-          }
+                
+        elementosEncontrados.add(ea);
       }
-      
       for (int eb : b){
-          boolean igual = false;
-          for (int i = 0; i < indice; i++){
-              if (eb == temp[i]) igual = true;
+                
+        if (!elementosEncontrados.contains(eb)) {
+                   
+          aux = 0;
+                    
+          if (elementosEncontrados.size() != 0) {
+                        
+            while ((aux < elementosEncontrados.size())&&(elementosEncontrados.get(aux) < eb)) {
+
+              aux++;
+            }
+            elementosEncontrados.add(aux, eb);
+          }else {
+                        
+            elementosEncontrados.add(eb);
           }
-          if (!igual){
-              temp[indice] = eb;
-              indice++;
-          }
+        }
       }
-      
-      int[] res = new int[indice];
-      for (int i = 0; i < indice; i++) res[i] = temp[i];
-      
-      return res;
+      out = new int[elementosEncontrados.size()];
+            
+      for (int i = 0; i < elementosEncontrados.size(); i++) {
+                
+        out[i] = elementosEncontrados.get(i);
+      }
+      return out;
     }
     
     /*
@@ -545,7 +591,14 @@ class Entrega {
      * Retornau l'invers sempre entre 1 i `n-1`, en cas que no existeixi retornau -1
      */
     static int exercici3(int a, int n) {
-      return -1; // TO DO
+      for (int i = 1; i < n; i++) {
+            
+        if ((a*i)%n == 1) {
+                
+          return i;
+        }
+      }
+      return -1;
     }
 
     /*

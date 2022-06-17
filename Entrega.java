@@ -75,40 +75,11 @@ class Entrega {
       return true;
     }
 
-    /*
+    /* DENIS
      * És cert que ∃!x. ∀y. Q(y) -> P(x) ?
      */
     static boolean exercici2(int[] universe, Predicate<Integer> p, Predicate<Integer> q) {
-      boolean solucionHaSidoEncontrada = false;
-      boolean solucionEsValida;
-      
-      for (int x = 0; x < universe.length; x++) {
-          
-          solucionEsValida = true;
-          
-          for (int y = 0; y < universe.length; y++) {
-              
-              if ((q.test(universe[y]))&&(!p.test(universe[x]))) {
-                  
-                  solucionEsValida = false;
-              }
-          }
-          if (solucionEsValida) {
-              
-              if (solucionHaSidoEncontrada) {
-                  
-                  return false;
-              }else {
-                  
-                  solucionHaSidoEncontrada = true;
-              }
-          }
-      }
-      if (solucionHaSidoEncontrada) {
-          
-          return true;
-      }
-      return false;
+      return false; // TO DO
     }
 
     /* TONI
@@ -226,6 +197,21 @@ class Entrega {
      * tant `a` com cada un dels elements de `p` està ordenat de menor a major.
      */
     static boolean exercici1(int[] a, int[][] p) {
+      
+      for(int x=0; x<a.length; x++){
+       
+          for(int y=0; y<p.length; y++){
+            
+            if(a[x]==p[y]){
+              
+              
+              
+            }
+            
+          }
+        
+      }
+      
       return false; // TO DO
     }
 

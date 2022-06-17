@@ -516,7 +516,18 @@ class Entrega {
      * Podeu suposar que `a` i `b` són positius.
      */
     static int exercici1(int a, int b) {
-      return -1; // TO DO
+      int aux;
+        
+      if (a < b) {
+            
+        aux = a; a = b; b = aux;
+      }
+        
+      while (b != 0) {
+            
+        aux = a; a = b; b = aux%b;
+      }
+      return a;
     }
 
     /*

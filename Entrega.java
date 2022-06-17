@@ -65,7 +65,7 @@ class Entrega {
                
               if (p.test(universe[x], universe[y])) {
                    
-                  if (!((q.test(universe[x]))&&(r.test(y)))) {
+                  if (!((q.test(universe[x]))&&(r.test(universe[y])))) {
                      
                       return false;
                   }

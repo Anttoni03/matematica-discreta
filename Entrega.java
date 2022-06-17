@@ -227,7 +227,7 @@ class Entrega {
           
           for (int j = 0; j < b.length; j++) {
               
-              if (a[i] == b[i]) {
+              if (a[i] == b[j]) {
                   
                   c[elementosComunes] = a[i];
                   elementosComunes++;
@@ -258,13 +258,13 @@ class Entrega {
           }
       }
       
-      for (int ea : b){
+      for (int eb : b){
           boolean igual = false;
           for (int i = 0; i < indice; i++){
-              if (ea == temp[i]) igual = true;
+              if (eb == temp[i]) igual = true;
           }
           if (!igual){
-              temp[indice] = ea;
+              temp[indice] = eb;
               indice++;
           }
       }

@@ -242,6 +242,39 @@ class Entrega {
       }
       return d;
     }
+    
+    
+    static int [] union(int [] a, int [] b){
+      int[] temp = new int[a.length + b.length];
+      int indice = 0;
+      for (int ea : a){
+          boolean igual = false;
+          for (int i = 0; i < indice; i++){
+              if (ea == temp[i]) igual = true;
+          }
+          if (!igual){
+              temp[indice] = ea;
+              indice++;
+          }
+      }
+      
+      for (int ea : b){
+          boolean igual = false;
+          for (int i = 0; i < indice; i++){
+              if (ea == temp[i]) igual = true;
+          }
+          if (!igual){
+              temp[indice] = ea;
+              indice++;
+          }
+      }
+      
+      int[] res = new int[indice];
+      for (int i = 0; i < indice; i++) res[i] = temp[i];
+      
+      return res;
+    }
+    
     /*
      * És `p` una partició d'`a`?
      *

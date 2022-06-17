@@ -59,13 +59,13 @@ class Entrega {
         Predicate<Integer> q,
         Predicate<Integer> r) {
 
-      for (int x = 0; x < universe.length; x++) {
+      for (int x : universe) {
            
-          for (int y = 0; y < universe.length; y++) {
+          for (int y : universe) {
                
-              if (p.test(universe[x], universe[y])) {
+              if (p.test(x, y)) {
                    
-                  if (!((q.test(universe[x]))&&(r.test(universe[y])))) {
+                  if (!((q.test(x))&&(r.test(y)))) {
                      
                       return false;
                   }

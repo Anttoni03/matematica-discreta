@@ -545,7 +545,14 @@ class Entrega {
      * Retornau l'invers sempre entre 1 i `n-1`, en cas que no existeixi retornau -1
      */
     static int exercici3(int a, int n) {
-      return -1; // TO DO
+      for (int i = 1; i < n; i++) {
+            
+        if ((a*i)%n == 1) {
+                
+          return i;
+        }
+      }
+      return -1;
     }
 
     /*

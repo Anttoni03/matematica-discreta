@@ -580,6 +580,59 @@ class Entrega {
   }
 
   static class Tema4 {
+    private static boolean esConexo(int[][] A) {
+        
+      int [] elementosConexos = new int[A.length];
+      int [] elementosComprobados = new int[A.length];
+        
+      boolean hanHabidoCambios, todosElementosSonConexos;
+        
+      for (int i = 0; i < A.length; i++) {
+            
+        elementosConexos[i] = (i == 0) ? 1 : 0;
+        elementosComprobados[i] = 0;
+      }
+        
+      while (true) {
+            
+        hanHabidoCambios = false;
+
+        for (int i = 0; i < A.length; i++) {
+
+          if ((elementosConexos[i] == 1)&&(elementosComprobados[i] == 0)) {
+
+            for (int j = 0; j < A.length; j++) {
+
+              if (A[i][j] == 1) {
+
+                elementosConexos[j] = 1;
+                hanHabidoCambios = true;
+              }
+            }
+            elementosComprobados[i] = 1;
+          }
+        }
+        if (!hanHabidoCambios) {
+
+          return false;
+        }else {
+          todosElementosSonConexos = true;
+
+          for (int i = 0; i < A.length; i++) {
+
+            if (elementosConexos[i] == 0) {
+
+              todosElementosSonConexos = false;
+            }
+          }
+          if (todosElementosSonConexos) {
+
+            return true;
+          }
+        }
+      }
+    }
+    
     /*
      * Donada una matriu d'adjacencia `A` d'un graf no dirigit, retornau l'ordre i la mida del graf.
      */
@@ -591,7 +644,30 @@ class Entrega {
      * Donada una matriu d'adjacencia `A` d'un graf no dirigit, digau si el graf es eulerià.
      */
     static boolean exercici2(int[][] A) {
-      return false; // TO DO
+      int grado;
+        
+      if (!esConexo(A)) {
+            
+        return false;
+      }
+        
+      for (int i = 0; i < A.length; i++) {
+            
+        grado = 0;
+            
+        for (int j = 0; j < A.length; j++) {
+                
+          if (A[i][j] == 1) {
+                    
+            grado++;
+          }
+        }
+        if (grado%2 != 0) {
+                
+          return false;
+        }
+      }
+      return true;
     }
 
     /*

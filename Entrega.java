@@ -126,7 +126,7 @@ class Entrega {
             
         for (int [] y : universe) {
                 
-          if (interseccion(x, y).length != y.length) {
+          if (Tema2.interseccion(x, y).length != y.length) {
 
             casoNoValido = true;
           }
@@ -261,31 +261,30 @@ class Entrega {
    * x és un enter d'a i el resultat f.apply(x) és un enter de b).
    */
   static class Tema2 {
+    
     static int [] interseccion(int [] a, int [] b) {     
-      int [] c = new int[a.length];
-      int elementosComunes = 0;
+      ArrayList<Integer> elementosComunes = new ArrayList<>();
+      int [] out;
       
-      for (int i = 0; i < a.length; i++) {
+      for (int ea : a) {
           
-          for (int j = 0; j < b.length; j++) {
+        for (int eb : b) {
               
-              if (a[i] == b[j]) {
+          if (ea == eb) {
                   
-                  c[elementosComunes] = a[i];
-                  elementosComunes++;
-              }
+            elementosComunes.add(ea);
           }
+        }
       }
-      int [] d = new int[elementosComunes];
+      out = new int[elementosComunes.size()];
       
-      for (int i = 0; i < elementosComunes; i++) {
+      for (int i = 0; i < elementosComunes.size(); i++) {
           
-          d[i] = c[i];
+        out[i] = elementosComunes.get(i);
       }
-      return d;
+      return out;
     }
-    
-    
+
     static int [] union(int [] a, int [] b){
       int[] temp = new int[a.length + b.length];
       int indice = 0;

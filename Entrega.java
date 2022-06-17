@@ -283,7 +283,12 @@ class Entrega {
      */
     static boolean exercici1(int[] a, int[][] p) {
       boolean elementoEncontrado;
-       
+      
+      if (p.length*p[0].length != a.length) {
+          
+          return false;
+      }
+      
       for (int [] ep1 : p) {
           
           for (int [] ep2 : p) {

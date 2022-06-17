@@ -286,34 +286,39 @@ class Entrega {
     }
 
     static int [] union(int [] a, int [] b){
-      int[] temp = new int[a.length + b.length];
-      int indice = 0;
+      ArrayList<Integer> elementosEncontrados = new ArrayList<>();
+      int [] out; int aux;
+            
       for (int ea : a){
-          boolean igual = false;
-          for (int i = 0; i < indice; i++){
-              if (ea == temp[i]) igual = true;
-          }
-          if (!igual){
-              temp[indice] = ea;
-              indice++;
-          }
+                
+        elementosEncontrados.add(ea);
       }
-      
       for (int eb : b){
-          boolean igual = false;
-          for (int i = 0; i < indice; i++){
-              if (eb == temp[i]) igual = true;
+                
+        if (!elementosEncontrados.contains(eb)) {
+                   
+          aux = 0;
+                    
+          if (elementosEncontrados.size() != 0) {
+                        
+            while ((aux < elementosEncontrados.size())&&(elementosEncontrados.get(aux) < eb)) {
+
+              aux++;
+            }
+            elementosEncontrados.add(aux, eb);
+          }else {
+                        
+            elementosEncontrados.add(eb);
           }
-          if (!igual){
-              temp[indice] = eb;
-              indice++;
-          }
+        }
       }
-      
-      int[] res = new int[indice];
-      for (int i = 0; i < indice; i++) res[i] = temp[i];
-      
-      return res;
+      out = new int[elementosEncontrados.size()];
+            
+      for (int i = 0; i < elementosEncontrados.size(); i++) {
+                
+        out[i] = elementosEncontrados.get(i);
+      }
+      return out;
     }
     
     /*

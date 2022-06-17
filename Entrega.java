@@ -282,22 +282,42 @@ class Entrega {
      * tant `a` com cada un dels elements de `p` està ordenat de menor a major.
      */
     static boolean exercici1(int[] a, int[][] p) {
-      
-      for(int x=0; x<a.length; x++){
+      boolean elementoEncontrado;
        
-          for(int y=0; y<p.length; y++){
-            
-            if(a[x]==p[y]){
+      for (int [] ep1 : p) {
+          
+          for (int [] ep2 : p) {
               
-              
-              
-            }
-            
+              if (ep1 != ep2) {
+                  
+                  if (interseccion(ep1, ep2).length != 0) {
+                        
+                      return false;
+                  }
+              }
           }
-        
       }
       
-      return false; // TO DO
+      for (int [] ep : p) {
+            
+          for (int eep : ep) {
+              
+              elementoEncontrado = false;
+              
+              for (int ea : a) {
+                    
+                  if (eep == ea) {
+                      
+                      elementoEncontrado = true;
+                  }
+              }
+              if (!elementoEncontrado) {
+                   
+                  return false;
+              }
+          }
+      }
+      return true;
     }
 
     /*

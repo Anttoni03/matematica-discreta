@@ -118,7 +118,25 @@ class Entrega {
      * que cada un d'ells està ordenat de menor a major.
      */
     static boolean exercici3(int[][] universe) {
-      return false; // TO DO
+      boolean casoNoValido;
+        
+      for (int [] x : universe) {
+            
+        casoNoValido = false;
+            
+        for (int [] y : universe) {
+                
+          if (interseccion(x, y).length != y.length) {
+
+            casoNoValido = true;
+          }
+        }
+        if (!casoNoValido) {
+                
+          return false;
+        }
+      }
+      return true;
     }
 
     /* JOSE

@@ -75,14 +75,14 @@ class Entrega {
       return true;
     }
 
-    /*
+    /* DENIS
      * És cert que ∃!x. ∀y. Q(y) -> P(x) ?
      */
     static boolean exercici2(int[] universe, Predicate<Integer> p, Predicate<Integer> q) {
       return false; // TO DO
     }
 
-    /*
+    /* TONI
      * És cert que ¬(∃x. ∀y. y ⊆ x) ?
      *
      * Observau que els membres de l'univers són arrays, tractau-los com conjunts i podeu suposar
@@ -92,7 +92,7 @@ class Entrega {
       return false; // TO DO
     }
 
-    /*
+    /* JOSE
      * És cert que ∀x. ∃!y. x·y ≡ 1 (mod n) ?
      */
     static boolean exercici4(int[] universe, int n) {

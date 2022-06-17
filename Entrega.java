@@ -125,7 +125,31 @@ class Entrega {
      * És cert que ∀x. ∃!y. x·y ≡ 1 (mod n) ?
      */
     static boolean exercici4(int[] universe, int n) {
-      return false; // TO DO
+      boolean casoVerificado;
+        
+      for (int x : universe) {
+            
+        casoVerificado = false;
+            
+        for (int y : universe) {
+                
+          if ((x*y)%n == 1) {
+                    
+            if (!casoVerificado) {
+                        
+              casoVerificado = true;
+            }else {
+                        
+              return false;
+            }
+          }
+        }
+        if (!casoVerificado) {
+                
+          return false;
+        }
+      }
+      return true;
     }
 
     /*

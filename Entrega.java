@@ -219,18 +219,9 @@ class Entrega {
    * x és un enter d'a i el resultat f.apply(x) és un enter de b).
    */
   static class Tema2 {
-    static int [] interseccion(int [] a, int [] b) {
-        
-      int [] c, d;
+    static int [] interseccion(int [] a, int [] b) {     
+      int [] c = new int[a.length];
       int elementosComunes = 0;
-        
-      if (a.length < b.length) {
-          
-          c = new int[a.length];
-      }else {
-         
-          c = new int[b.length];
-      }
       
       for (int i = 0; i < a.length; i++) {
           
@@ -243,14 +234,14 @@ class Entrega {
               }
           }
       }
-      d = new int[elementosComunes];
-     
+      int [] d = new int[elementosComunes];
+      
       for (int i = 0; i < elementosComunes; i++) {
           
           d[i] = c[i];
       }
       return d;
-  }
+    }
     /*
      * És `p` una partició d'`a`?
      *

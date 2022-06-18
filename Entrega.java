@@ -690,7 +690,16 @@ class Entrega {
      * Donada una matriu d'adjacencia `A` d'un graf no dirigit, retornau l'ordre i la mida del graf.
      */
     static int[] exercici1(int[][] A) {
-      return new int[]{}; // TO DO
+      int[] resultado = new int[2];
+      resultado[0] = A.length;
+      
+      for (int i = 0; i < A.length; i++){
+          for (int j = i+1; j < A.length; j++){
+              if (A[i][j] == 1) resultado[1]++;
+          }
+      }
+      
+      return resultado;
     }
 
     /*
@@ -736,7 +745,39 @@ class Entrega {
      * Donada una matriu d'adjacencia `A` d'un graf connex no dirigit, digau si el graf conté algún cicle.
      */
     static boolean exercici4(int[][] A) {
-      return false; // TO DO
+      int[][] auxiliar;
+      int nodoFinal;
+      int aristas = 0, recorrido;
+      
+      /////////  CAMBIAR ESTOS FOR POR aristas = exercici1(A)[1]; cuando el ejercicio 1 se haga  /////////
+      for (int i = 0; i < A.length; i++){
+          for (int j = i+1; j < A.length; j++){
+              if (A[i][j] == 1) aristas++;
+          }
+      }
+      ////////////////////////////////////////////////////////////////////////////////////
+      
+      for (int i = 0; i < A.length; i++) {
+        auxiliar = A.clone();
+        nodoFinal = i;
+        recorrido = 0;
+        
+        for (int j = 0; j < A.length; j++){
+            
+          if (auxiliar[nodoFinal][j] == 1){
+            auxiliar[nodoFinal][j] = 0;
+            auxiliar[j][nodoFinal] = 0;
+            recorrido++;
+            nodoFinal = j;
+            
+            if (i == nodoFinal) return true;
+            if (recorrido > aristas) break;
+            
+            j = -1;
+          }
+        }
+      }
+      return false;
     }
     /*
      * Aquí teniu alguns exemples i proves relacionades amb aquests exercicis (vegeu `main`)

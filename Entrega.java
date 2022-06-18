@@ -296,22 +296,13 @@ class Entrega {
       for (int eb : b){
                 
         if (!elementosEncontrados.contains(eb)) {
-                   
-          aux = 0;
-                    
-          if (elementosEncontrados.size() != 0) {
-                        
-            while ((aux < elementosEncontrados.size())&&(elementosEncontrados.get(aux) < eb)) {
-
-              aux++;
-            }
-            elementosEncontrados.add(aux, eb);
-          }else {
-                        
-            elementosEncontrados.add(eb);
-          }
+          
+          elementosEncontrados.add(eb);
         }
       }
+      
+      elementosEncontrados.sort(null);
+      
       out = new int[elementosEncontrados.size()];
             
       for (int i = 0; i < elementosEncontrados.size(); i++) {

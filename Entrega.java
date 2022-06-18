@@ -412,7 +412,22 @@ class Entrega {
     static final int BIJECTIVE = INJECTIVE + SURJECTIVE;
 
     static int exercici4(int[] dom, int[] codom, Function<Integer, Integer> f) {
-      return -1; // TO DO
+      boolean injective = true;
+      boolean surjective = true;
+      
+      for (int b : codom){
+        int antiimagenes = 0;
+        for (int a : dom){
+            if (f.apply(a) == b) antiimagenes++;
+        }
+        if (antiimagenes > 1) injective = false;
+        if (antiimagenes < 1) surjective = false;
+      }
+      
+      if (injective && surjective) return BIJECTIVE;
+      else if (injective) return INJECTIVE;
+      else if (surjective) return SURJECTIVE;
+      else return NOTHING_SPECIAL;
     }
 
     /*

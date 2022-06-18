@@ -747,15 +747,9 @@ class Entrega {
     static boolean exercici4(int[][] A) {
       int[][] auxiliar;
       int nodoFinal;
-      int aristas = 0, recorrido;
+      int aristas, recorrido;
       
-      /////////  CAMBIAR ESTOS FOR POR aristas = exercici1(A)[1]; cuando el ejercicio 1 se haga  /////////
-      for (int i = 0; i < A.length; i++){
-          for (int j = i+1; j < A.length; j++){
-              if (A[i][j] == 1) aristas++;
-          }
-      }
-      ////////////////////////////////////////////////////////////////////////////////////
+      aristas = exercici1(A)[1];
       
       for (int i = 0; i < A.length; i++) {
         auxiliar = A.clone();

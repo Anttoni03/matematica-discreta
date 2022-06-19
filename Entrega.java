@@ -781,7 +781,16 @@ class Entrega {
      *
      */
     static int exercici3(int n, int d) {
-      return -1; // TO DO
+      int nodosTotales = 0;
+      int nodosPorContar = n;
+        
+      while (true) {
+            
+        nodosTotales += nodosPorContar - nodosPorContar%d;
+        nodosPorContar = nodosPorContar/d + nodosPorContar%d;
+            
+        if (nodosPorContar == 1) return nodosTotales + 1;
+      }
     }
 
     /*

@@ -109,23 +109,20 @@ class Entrega {
      * que cada un d'ells està ordenat de menor a major.
      */
     static boolean exercici3(int[][] universe) {
-      boolean casoNoValido;
+      boolean casoValido;
         
       for (int [] x : universe) {
             
-        casoNoValido = false;
+        casoValido = true;
             
         for (int [] y : universe) {
                 
           if (Tema2.interseccion(x, y).length != y.length) {
 
-            casoNoValido = true;
+            casoValido = false;
           }
         }
-        if (!casoNoValido) {
-                
-          return false;
-        }
+        if (casoValido) return false;
       }
       return true;
     }

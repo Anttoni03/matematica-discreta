@@ -54,23 +54,23 @@ class Entrega {
      * És cert que ∀x,y. P(x,y) -> Q(x) ^ R(y) ?
      */
     static boolean exercici1(
-        int[] universe,
-        BiPredicate<Integer, Integer> p,
-        Predicate<Integer> q,
-        Predicate<Integer> r) {
+      int[] universe,
+      BiPredicate<Integer, Integer> p,
+      Predicate<Integer> q,
+      Predicate<Integer> r) {
 
       for (int x : universe) {
            
-          for (int y : universe) {
+        for (int y : universe) {
                
-              if (p.test(x, y)) {
+          if (p.test(x, y)) {
                    
-                  if (!((q.test(x))&&(r.test(y)))) {
+            if (!((q.test(x))&&(r.test(y)))) {
                      
-                      return false;
-                  }
-              }
+              return false;
+            }
           }
+        }
       }
       return true;
     }
@@ -89,13 +89,16 @@ class Entrega {
         for (int y : universe) {
                
           if ((q.test(y))&&(!p.test(x))) {
-                  
+              
             solucionEsValida = false;
           }
         }
         if (solucionEsValida) {
                 
-          if (solucionHaSidoEncontrada) return false;
+          if (solucionHaSidoEncontrada) {
+              
+            return false;
+          }
           solucionHaSidoEncontrada = true;
         }
       }
@@ -109,11 +112,10 @@ class Entrega {
      * que cada un d'ells està ordenat de menor a major.
      */
     static boolean exercici3(int[][] universe) {
-      boolean casoValido;
         
       for (int [] x : universe) {
             
-        casoValido = true;
+        boolean casoValido = true;
             
         for (int [] y : universe) {
                 
@@ -122,7 +124,10 @@ class Entrega {
             casoValido = false;
           }
         }
-        if (casoValido) return false;
+        if (casoValido) {
+            
+          return false;
+        }
       }
       return true;
     }
@@ -131,21 +136,26 @@ class Entrega {
      * És cert que ∀x. ∃!y. x·y ≡ 1 (mod n) ?
      */
     static boolean exercici4(int[] universe, int n) {
-      boolean casoVerificado;
         
       for (int x : universe) {
             
-        casoVerificado = false;
+        boolean casoVerificado = false;
             
         for (int y : universe) {
                 
           if ((x*y)%n == 1) {
                     
-            if (casoVerificado) return false;;
+            if (casoVerificado) {
+                
+              return false;
+            }
             casoVerificado = true;
           }
         }
-        if (!casoVerificado) return false;
+        if (!casoVerificado) {
+            
+          return false;
+        }
       }
       return true;
     }
@@ -244,7 +254,6 @@ class Entrega {
     
     static int [] interseccion(int [] a, int [] b) {     
       ArrayList<Integer> elementosComunes = new ArrayList<>();
-      int [] out;
       
       for (int ea : a) {
           
@@ -256,38 +265,11 @@ class Entrega {
           }
         }
       }
-      out = new int[elementosComunes.size()];
+      int[] out = new int[elementosComunes.size()];
       
       for (int i = 0; i < elementosComunes.size(); i++) {
           
         out[i] = elementosComunes.get(i);
-      }
-      return out;
-    }
-
-    static int [] union(int [] a, int [] b){
-      ArrayList<Integer> elementosEncontrados = new ArrayList<>();
-      int [] out; int aux;
-            
-      for (int ea : a){
-                
-        elementosEncontrados.add(ea);
-      }
-      for (int eb : b){
-                
-        if (!elementosEncontrados.contains(eb)) {
-          
-          elementosEncontrados.add(eb);
-        }
-      }
-      
-      elementosEncontrados.sort(null);
-      
-      out = new int[elementosEncontrados.size()];
-            
-      for (int i = 0; i < elementosEncontrados.size(); i++) {
-                
-        out[i] = elementosEncontrados.get(i);
       }
       return out;
     }
@@ -299,33 +281,44 @@ class Entrega {
      * tant `a` com cada un dels elements de `p` està ordenat de menor a major.
      */
     static boolean exercici1(int[] a, int[][] p) {
-      boolean elementoEncontrado;
       int aux = 0;
       
       for (int [] ep : p) {
           
-          aux += ep.length;
+        aux += ep.length;
       }
-      if (aux != a.length) return false;
+      if (aux != a.length) {
+          
+        return false;
+      }
       
       for (int [] ep1 : p) {
           
         for (int [] ep2 : p) {
               
-          if ((ep1 != ep2)&&(interseccion(ep1, ep2).length != 0)) return false;
+          if ((ep1 != ep2)&&(interseccion(ep1, ep2).length != 0)) {
+              
+            return false;
+          }
         }
       }
       for (int [] ep : p) {
             
         for (int eep : ep) {
               
-          elementoEncontrado = false;
+          boolean elementoEncontrado = false;
               
           for (int ea : a) {
                     
-            if (eep == ea) elementoEncontrado = true;
+            if (eep == ea) {
+                
+              elementoEncontrado = true;
+            }
           }
-          if (!elementoEncontrado) return false;
+          if (!elementoEncontrado) {
+              
+            return false;
+          }
         }
       }
       return true;
@@ -339,7 +332,6 @@ class Entrega {
     static boolean exercici2(int[] a, int[][] rel, int x) {
       int elementosReflexivos = 0;
       int elementoMinimo = a[0];
-      boolean relacionEncontrada;
         
       for (int [] erel : rel) {
             
@@ -357,9 +349,12 @@ class Entrega {
                 
           if (erel[0] != erel[1]) {
                     
-            if ((erel[0] == erelAux[1])&&(erel[1] == erelAux[0])) return false;
+            if ((erel[0] == erelAux[1])&&(erel[1] == erelAux[0])){
+                
+              return false;
+            }
           }
-          relacionEncontrada = false;
+          boolean relacionEncontrada = false;
                 
           if (erel[1] == erelAux[0]) {
                     
@@ -370,7 +365,10 @@ class Entrega {
                 relacionEncontrada = true;
               }
             }
-            if (!relacionEncontrada) return false;
+            if (!relacionEncontrada){
+                
+              return false;
+            }
           }
         }
       }
@@ -422,14 +420,25 @@ class Entrega {
       boolean injective = true;
       boolean surjective = true;
       
-      for (int b : codom){
+      for (int b : codom) {
+          
         int antiimagenes = 0;
-        for (int a : dom){
-            if (f.apply(a) == b) antiimagenes++;
+        
+        for (int a : dom) {
+            
+          if (f.apply(a) == b) {
+            antiimagenes++;
+          }
         }
-        if (antiimagenes > 1) injective = false;
-        if (antiimagenes < 1) surjective = false;
+        
+        if (antiimagenes > 1) {
+          injective = false;
+        }
+        if (antiimagenes < 1) {
+          surjective = false;
+        }
       }
+      
       return (3 + (injective? 0 : -INJECTIVE) + (surjective? 0 : -SURJECTIVE));
     }
 
@@ -673,14 +682,23 @@ class Entrega {
             elementosComprobados[i] = 1;
           }
         }
-        if (!hanHabidoCambios) return false;
+        if (!hanHabidoCambios) {
+            
+          return false;
+        }
         todosElementosSonConexos = true;
 
         for (int i = 0; i < A.length; i++) {
 
-          if (elementosConexos[i] == 0) todosElementosSonConexos = false;
+          if (elementosConexos[i] == 0){
+              
+            todosElementosSonConexos = false;
+          }
         }
-        if (todosElementosSonConexos) return true;
+        if (todosElementosSonConexos) {
+            
+          return true;
+        }
       }
     }
     
@@ -690,10 +708,12 @@ class Entrega {
     static int[] exercici1(int[][] A) {
       int aux = 0;
         
-      for (int i = 0; i < A.length; i++){
-          for (int j = i; j < A.length; j++){
-              aux += A[i][j];
-          }
+      for (int i = 0; i < A.length; i++) {
+          
+        for (int j = i; j < A.length; j++) {
+              
+          aux += A[i][j];
+        }
       }
       return new int[] {A.length, aux};
     }
@@ -702,7 +722,10 @@ class Entrega {
      * Donada una matriu d'adjacencia `A` d'un graf no dirigit, digau si el graf es eulerià.
      */
     static boolean exercici2(int[][] A) {
-      if (!esConexo(A)) {return false;}
+      if (!esConexo(A)) {
+          
+        return false;
+      }
         
       for (int [] ea : A) {
             
@@ -715,7 +738,10 @@ class Entrega {
             grado++;
           }
         }
-        if (grado%2 != 0) {return false;}
+        if (grado%2 != 0) {
+            
+          return false;
+        }
       }
       return true;
     }
@@ -734,7 +760,10 @@ class Entrega {
         nodosTotales += nodosPorContar - nodosPorContar%d;
         nodosPorContar = nodosPorContar/d + nodosPorContar%d;
             
-        if (nodosPorContar == 1) return nodosTotales + 1;
+        if (nodosPorContar == 1) {
+            
+          return nodosTotales + 1;
+        }
       }
     }
 
@@ -742,27 +771,34 @@ class Entrega {
      * Donada una matriu d'adjacencia `A` d'un graf connex no dirigit, digau si el graf conté algún cicle.
      */
     static boolean exercici4(int[][] A) {
-      int[][] auxiliar;
-      int nodoFinal;
-      int aristas, recorrido;
+      int aristas;
       
       aristas = exercici1(A)[1];
       
       for (int i = 0; i < A.length; i++) {
-        auxiliar = A.clone();
-        nodoFinal = i;
-        recorrido = 0;
+          
+        int[][] auxiliar = A.clone();
+        int nodoFinal = i;
+        int recorrido = 0;
         
-        for (int j = 0; j < A.length; j++){
+        for (int j = 0; j < A.length; j++) {
             
           if (auxiliar[nodoFinal][j] == 1){
+              
             auxiliar[nodoFinal][j] = 0;
             auxiliar[j][nodoFinal] = 0;
+            
             recorrido++;
             nodoFinal = j;
             
-            if (i == nodoFinal) return true;
-            if (recorrido > aristas) break;
+            if (i == nodoFinal) {
+                
+              return true;
+            }
+            if (recorrido > aristas) {
+                
+              break;
+            }
             
             j = -1;
           }

@@ -75,43 +75,34 @@ class Entrega {
       return true;
     }
 
-    /* DENIS
+    /*
      * És cert que ∃!x. ∀y. Q(y) -> P(x) ?
      */
     static boolean exercici2(int[] universe, Predicate<Integer> p, Predicate<Integer> q) {
       boolean solucionHaSidoEncontrada = false;
       boolean solucionEsValida;
         
-      for (int x = 0; x < universe.length; x++) {
+      for (int x : universe) {
            
-          solucionEsValida = true;
+        solucionEsValida = true;
            
-          for (int y = 0; y < universe.length; y++) {
+        for (int y : universe) {
                
-              if ((q.test(universe[y]))&&(!p.test(universe[x]))) {
+          if ((q.test(y))&&(!p.test(x))) {
                   
-                  solucionEsValida = false;
-              }
+            solucionEsValida = false;
           }
-          if (solucionEsValida) {
+        }
+        if (solucionEsValida) {
                 
-              if (solucionHaSidoEncontrada) {
-                    
-                  return false;
-              }else {
-                   
-                  solucionHaSidoEncontrada = true;
-              }
-          }
+          if (solucionHaSidoEncontrada) return false;
+          solucionHaSidoEncontrada = true;
+        }
       }
-      if (solucionHaSidoEncontrada) {
-          
-          return true;
-      }
-      return false;
+      return solucionHaSidoEncontrada;
     }
 
-    /* TONI
+    /*
      * És cert que ¬(∃x. ∀y. y ⊆ x) ?
      *
      * Observau que els membres de l'univers són arrays, tractau-los com conjunts i podeu suposar
@@ -139,7 +130,7 @@ class Entrega {
       return true;
     }
 
-    /* JOSE
+    /*
      * És cert que ∀x. ∃!y. x·y ≡ 1 (mod n) ?
      */
     static boolean exercici4(int[] universe, int n) {

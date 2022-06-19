@@ -643,7 +643,6 @@ class Entrega {
 
   static class Tema4 {
     private static boolean esConexo(int[][] A) {
-        
       int [] elementosConexos = new int[A.length];
       int [] elementosComprobados = new int[A.length];
         
@@ -674,23 +673,14 @@ class Entrega {
             elementosComprobados[i] = 1;
           }
         }
-        if (!hanHabidoCambios) {
+        if (!hanHabidoCambios) return false;
+        todosElementosSonConexos = true;
 
-          return false;
-        }else {
-          todosElementosSonConexos = true;
+        for (int i = 0; i < A.length; i++) {
 
-          for (int i = 0; i < A.length; i++) {
-
-            if (elementosConexos[i] == 0) {
-
-              todosElementosSonConexos = false;
-            }
-          }
-          if (todosElementosSonConexos) {
-
-            return true;
-          }
+          if (elementosConexos[i] == 0) todosElementosSonConexos = false;
+        }
+        if (todosElementosSonConexos) return true;
         }
       }
     }

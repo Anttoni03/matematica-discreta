@@ -681,7 +681,6 @@ class Entrega {
           if (elementosConexos[i] == 0) todosElementosSonConexos = false;
         }
         if (todosElementosSonConexos) return true;
-        }
       }
     }
     

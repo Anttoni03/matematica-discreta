@@ -312,13 +312,7 @@ class Entrega {
           
         for (int [] ep2 : p) {
               
-          if (ep1 != ep2) {
-                  
-            if (interseccion(ep1, ep2).length != 0) {
-                        
-              return false;
-            }
-          }
+          if ((ep1 != ep2)&&(interseccion(ep1, ep2).length != 0)) return false;
         }
       }
       for (int [] ep : p) {
@@ -329,15 +323,9 @@ class Entrega {
               
           for (int ea : a) {
                     
-            if (eep == ea) {
-                      
-              elementoEncontrado = true;
-            }
+            if (eep == ea) elementoEncontrado = true;
           }
-          if (!elementoEncontrado) {
-                   
-            return false;
-          }
+          if (!elementoEncontrado) return false;
         }
       }
       return true;

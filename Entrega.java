@@ -141,19 +141,11 @@ class Entrega {
                 
           if ((x*y)%n == 1) {
                     
-            if (!casoVerificado) {
-                        
-              casoVerificado = true;
-            }else {
-                        
-              return false;
-            }
+            if (casoVerificado) return false;;
+            casoVerificado = true;
           }
         }
-        if (!casoVerificado) {
-                
-          return false;
-        }
+        if (!casoVerificado) return false;
       }
       return true;
     }

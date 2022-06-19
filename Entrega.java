@@ -430,11 +430,7 @@ class Entrega {
         if (antiimagenes > 1) injective = false;
         if (antiimagenes < 1) surjective = false;
       }
-      
-      if (injective && surjective) return BIJECTIVE;
-      else if (injective) return INJECTIVE;
-      else if (surjective) return SURJECTIVE;
-      else return NOTHING_SPECIAL;
+      return (3 + (injective? 0 : -INJECTIVE) + (surjective? 0 : -SURJECTIVE));
     }
 
     /*

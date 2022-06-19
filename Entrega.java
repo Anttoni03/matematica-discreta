@@ -367,7 +367,44 @@ class Entrega {
      * Podeu soposar que `x` pertany a `a` i que `a` està ordenat de menor a major.
      */
     static boolean exercici2(int[] a, int[][] rel, int x) {
-      return false; // TO DO
+      int elementosReflexivos = 0;
+      int elementoMinimo = a[0];
+      boolean relacionEncontrada;
+        
+      for (int [] erel : rel) {
+            
+        if (erel[1] == elementoMinimo) {
+                
+          elementoMinimo = erel[0];
+        }
+            
+        if (erel[0] == erel[1]) {
+                
+          elementosReflexivos++;
+        }
+            
+        for (int [] erelAux : rel) {
+                
+          if (erel[0] != erel[1]) {
+                    
+            if ((erel[0] == erelAux[1])&&(erel[1] == erelAux[0])) return false;
+          }
+          relacionEncontrada = false;
+                
+          if (erel[1] == erelAux[0]) {
+                    
+            for (int [] aux : rel) {
+                        
+              if ((erel[0] == aux[0])&&(erelAux[1] == aux[1])) {
+                            
+                relacionEncontrada = true;
+              }
+            }
+            if (!relacionEncontrada) return false;
+          }
+        }
+      }
+      return ((elementoMinimo == x)&&(elementosReflexivos == a.length));
     }
 
     /*

@@ -771,41 +771,64 @@ class Entrega {
      * Donada una matriu d'adjacencia `A` d'un graf connex no dirigit, digau si el graf conté algún cicle.
      */
     static boolean exercici4(int[][] A) {
-      int aristas;
-      
-      aristas = exercici1(A)[1];
-      
+            
       for (int i = 0; i < A.length; i++) {
+        
+        int unos = 0;
+        for (int j = 0; j < A[i].length; j++) {
+            
+          if (A[i][j] == 1) {
+              
+            unos++;
+          }
+        }
+        if (unos < 2) {
+            
+            continue;
+        }
           
         int[][] auxiliar = A.clone();
-        int nodoFinal = i;
-        int recorrido = 0;
+        ArrayList<Integer> nodos = new ArrayList<>();
+        nodos.add(i);
         
         for (int j = 0; j < A.length; j++) {
+          
+          if (auxiliar[nodos.get(nodos.size()-1)][j] == 1){
             
-          if (auxiliar[nodoFinal][j] == 1){
-              
-            auxiliar[nodoFinal][j] = 0;
-            auxiliar[j][nodoFinal] = 0;
-            
-            recorrido++;
-            nodoFinal = j;
-            
-            if (i == nodoFinal) {
+            if (nodos.contains(j)) {
                 
               return true;
             }
-            if (recorrido > aristas) {
-                
-              break;
+            
+            auxiliar[nodos.get(nodos.size()-1)][j] = 0;
+            auxiliar[j][nodos.get(nodos.size()-1)] = 0;
+            
+            nodos.add(j);
+            
+            int ceros = 0;
+            for (int k = 0; k < auxiliar[nodos.get(nodos.size()-1)].length; k++) {
+                if (auxiliar[nodos.get(nodos.size()-1)][k] == 0) {
+                    ceros++;
+                }
             }
             
-            j = -1;
+            if (ceros == auxiliar[nodos.get(nodos.size()-1)].length){
+              j = nodos.get(nodos.size()-1);
+              nodos.remove(nodos.size()-1);
+              
+              auxiliar[nodos.get(nodos.size()-1)][j] = 1;
+              auxiliar[j][nodos.get(nodos.size()-1)] = 1;
+            }
+            else {
+                
+              j = -1;
+            }
           }
         }
       }
       return false;
     }
+    
     /*
      * Aquí teniu alguns exemples i proves relacionades amb aquests exercicis (vegeu `main`)
      */
